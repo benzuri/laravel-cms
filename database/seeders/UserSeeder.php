@@ -1,0 +1,33 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
+class UserSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('users')->insert([
+            [
+                'name' => 'Admin',
+                'email' => 'admin@cms.test',
+                'password' => Hash::make('admin'),
+                'is_admin' => true,
+            ],
+            [
+                'name' => 'User',
+                'email' => 'user@cms.test',
+                'password' => Hash::make('user'),
+                'is_admin' => false,
+            ],
+        ]);
+    }
+}
